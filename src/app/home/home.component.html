@@ -1,0 +1,39 @@
+<div class="main" data-aos="fade-zoom-in" data-aos-once="true" data-aos-delay="100" data-aos-duration="600">
+  <div id="landingCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button *ngFor="let news of newsCarousel; index as indice" type="button" data-bs-target="#landingCarousel"
+        [attr.data-bs-slide-to]="indice" [ngClass]="{'active': indice==0}" [attr.aria-current]="indice==0"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item" *ngFor="let news of newsCarousel; index as indice" [ngClass]="{'active': indice==0}">
+        <div class="carousel-image" [ngStyle]="{'background-image': 'url('+ news.image +')'}"></div>
+        <div class="carousel-caption">
+          <h5>{{news.title}}</h5>
+          <p>{{news.message}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>{{ipsum}}</p>
+
+  <div class="content">
+    <div *ngFor="let news of newsCard; index as indice"
+      [attr.data-aos]="((indice % 2) == 0) ? 'fade-right' : 'fade-left'" data-aos-once="true" data-aos-delay="200"
+      data-aos-duration="1200" class="aux-container">
+      <div [ngClass]="{'float-left': (indice % 2) == 0, 'float-right': (indice % 2) == 1}" class="aux-img"
+        [ngStyle]="{'background-image': 'url('+ news.image +')'}"></div>
+      <div [ngClass]="{'float-left': (indice % 2) == 1, 'float-right': (indice % 2) == 0}" class="aux-content">
+        <div class="aux-header">
+          {{news.title}}
+        </div>
+        <div class="aux-text" [ngClass]="{'extend': news.link == '' }">
+          <p>{{news.message}}</p>
+        </div>
+        <div class="aux-link" *ngIf="news.link !== '' ">
+          <a [routerLink]="['/' + news.link ]">ver mas</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

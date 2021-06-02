@@ -1,0 +1,22 @@
+<div class="main">
+  <ul class="nav flex-column">
+    <li class="nav-item" *ngIf="isBilling">
+      <a class="nav-link navbar-link" [routerLink]="['/dashboard/billing/new']">Nueva Factura</a>
+    </li>
+    <li class="nav-item" *ngIf="isClient">
+      <a class="nav-link navbar-link" [routerLink]="['/dashboard/client/new']" >Nuevo cliente</a>
+    </li>
+    <li class="nav-item" *ngIf="isFinancing">
+      <a class="nav-link navbar-link" [routerLink]="['/dashboard/financing/new']">Nueva opcion de financiacion</a>
+    </li>
+    <li class="nav-item" *ngIf="isHardware">
+      <a class="nav-link navbar-link" [routerLink]="['/dashboard/hardware/new']">Nuevo dispositivo</a>
+    </li>
+    <li class="nav-item" *ngIf="isNews">
+      <a class="nav-link navbar-link" [routerLink]="['/dashboard/news/new']">Nueva noticia</a>
+    </li>
+    <li class="nav-item" *ngIf="isVehicle">
+      <a class="nav-link navbar-link" [routerLink]="['/dashboard/vehicle/new']">Nuevo vehiculo</a>
+    </li>
+  </ul>
+</div>

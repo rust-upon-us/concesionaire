@@ -1,0 +1,77 @@
+<div class="main">
+  <form class="login-form" [formGroup]="billingForm" (ngSubmit)="onSubmit()">
+    <div class="input-control">
+      <label for="year" class="form-label">Fecha de venta</label>
+      <input type="date" id="year" class="form-control" [ngClass]="{'is-invalid': form.year.errors && isSent}"
+        formControlName="year">
+      <div class="invalid-feedback">
+        introduce una fecha valida
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="cost" class="form-label">Coste asociado</label>
+      <input type="number" id="cost" class="form-control" [ngClass]="{'is-invalid': form.cost.errors && isSent}"
+        formControlName="cost">
+      <div class="invalid-feedback">
+        introduce un coste superior a 0.
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="vehicle" class="form-label">Vehiculo en venta</label>
+      <select id="vehicle" class="form-select" [ngClass]="{'is-invalid': form.vehicle.errors && isSent}"
+        formControlName="vehicle">
+        <option value="" disabled>Selecciona el vehiculo vendido</option>
+        <option *ngFor="let vehicle of vehicleList" [value]="vehicle._id"
+          [attr.selected]="billingObject && vehicle._id == billingObject.vehicle._id">
+          {{vehicle._id}}: {{vehicle.brand}} {{vehicle.model}}
+        </option>
+      </select>
+      <div class="invalid-feedback">
+        Selecciona un vehiculo para realizar la venta
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="client" class="form-label">Cliente asociado</label>
+      <select id="client" class="form-select" [ngClass]="{'is-invalid': form.client.errors && isSent}"
+        formControlName="client">
+        <option value="" disabled>Selecciona el cliente que compra el vehiculo</option>
+        <option *ngFor="let client of clientList" [value]="client._id"
+          [attr.selected]="billingObject && client._id == billingObject.client._id">
+          {{client.nif}}: {{client.name}} {{client.surname}}
+        </option>
+      </select>
+      <div class="invalid-feedback">
+        Selecciona un cliente para realizar la venta
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="worker" class="form-label">Trabajador encargado</label>
+      <select id="worker" class="form-select" [ngClass]="{'is-invalid': form.worker.errors && isSent}"
+        formControlName="worker">
+        <option value="" disabled>Selecciona el trabajador encargado de la venta</option>
+        <option *ngFor="let worker of workerList" [value]="worker._id"
+          [attr.selected]="billingObject && worker._id == billingObject.worker._id">
+          {{worker.nif}}: {{worker.name}} {{worker.surname}}
+        </option>
+      </select>
+      <div class="invalid-feedback">
+        Selecciona un trabajador para realizar la venta
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="financing" class="form-label">Opcion de financiacion</label>
+      <select id="financing" class="form-select" [ngClass]="{'is-invalid': form.financing.errors && isSent}"
+        formControlName="financing">
+        <option value="" disabled>Selecciona la opcion de financiacion aplicada</option>
+        <option *ngFor="let financing of financingList" [value]="financing._id"
+          [attr.selected]="billingObject && financing._id == billingObject.financing._id">
+          {{financing._id}}: {{financing.source}}
+        </option>
+      </select>
+      <div class="invalid-feedback">
+        Selecciona un modelo de financiacion para realizar la venta
+      </div>
+    </div>
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
+</div>

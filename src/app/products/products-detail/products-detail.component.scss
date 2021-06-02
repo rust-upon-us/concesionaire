@@ -1,0 +1,95 @@
+@import "../../app.component.scss";
+
+.main {
+  padding: 0px 10%;
+  .carousel {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding: 0px;
+    .carousel-indicators {
+      background-color: $background-aux2-color;
+      margin: 0px 4.5em;
+      width: calc(100% - 9em);
+      button {
+        background-color: $background-aux-color;
+        padding: 4px;
+      }
+    }
+    .carousel-inner {
+      .carousel-image {
+        height: calc(100vh - 100px);
+        background-size: cover;
+        align-self: center;
+        display: block;
+      }
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+      background-color: $background-aux-color;
+      width: 4.5em;
+    }
+  }
+  .card {
+    background-color: $background-card-color;
+    padding: 0px;
+    .card-header {
+      color: $text-base-color;
+      text-align: center;
+      font-size: 2em;
+    }
+    .card-content {
+      flex-wrap: wrap;
+      display: flex;
+      width: 100%;
+      .record-containner {
+        padding: 3px;
+        display: inline-flex;
+        .record-description {
+          background-color: $background-card-content;
+          font-size: $main-text-size;
+          color: $text-hover-color;
+          font-weight: bold;
+          padding: 10px;
+          width: 40%;
+          &::after {
+            content: ":";
+          }
+        }
+        .record-content {
+          background-color: $background-card-content;
+          font-size: $main-text-size;
+          color: $text-aux-color;
+          padding: 12px;
+          width: 60%;
+        }
+      }
+      .record-list {
+        font-size: $main-text-size;
+        color: $text-hover-color;
+        text-align: center;
+        font-weight: bold;
+        padding: 20px;
+        width: 25%;
+      }
+      .record-list-content {
+        background-color: $background-card-content;
+        width: calc(75% - 4px);
+        flex-wrap: wrap;
+        display: flex;
+        padding: 20px;
+        div {
+          display: list-item;
+        }
+      }
+    }
+  }
+  .separator {
+    background-color: $background-card-color;
+    color: $text-base-color;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2em;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
+
+$text-aux-color: #e9e9e9;
+$text-base-color: #d85600;
+$text-hover-color: #e26c1f;
+$text-focus-color: #0a0a0a;
+$text-fade-color: rgba(216, 86, 0, 0.8);
+$text-decoration: rgba(103, 103, 103, 0.7);;
+
+$main-text-size: 1.2em;
+$aux-text-size: 0.9em;
+$def-text-size: 1em;
+
+$port-view: calc(100vh - 9.2rem);
+
+$background-base-color: #fff;
+$background-main-color: #0a0a0a;
+$background-aux-color: rgba(0, 0, 0, 0.85);
+$background-aux2-color: rgba(0, 0, 0, 0.42);
+$background-dashboard-color: rgb(219, 219, 219);
+
+$background-btn-color: rgba(56, 56, 56, 0.85);
+$background-card-color: rgba(88, 88, 88, 0.35);
+$background-card-decoration: rgba(20, 20, 20, 0.80);
+$background-card-content: rgba(103, 99, 99, 0.85);
+$background-card-hover: rgba(226, 226, 226, 0.25);
+$card-shadow: rgba(88, 88, 88, 0.20);
+
+$button-background-main: #e26c1f;
+$button-background-edit: #383838;
+$button-background-delete: #e2251f;
+$button-background-hover: #d85600;
+$button-shadow-color: rgba(255, 161, 0, 0.343262);
+
+$input-background-main: rgba(103, 99, 99, 0.85);
+
+.main {
+  background-color: $background-main-color;
+  color: $text-aux-color;
+}

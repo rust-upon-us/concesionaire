@@ -1,0 +1,58 @@
+@import "../../app.component.scss";
+.main {
+  background-color: #fff;
+  .navbar {
+    background: $background-aux-color;
+    position: relative;
+    padding-top: 0;
+    .navbar-navigation {
+      top: 0px;
+      .navbar-brand {
+        color: $text-aux-color;
+        cursor: pointer;
+        height: 4rem;
+        width: 4rem;
+      }
+      .navbar-brand-light {
+        background: url("../../../assets/icons/brand-light.png") center center
+          no-repeat;
+        background-size: cover;
+      }
+      .navbar-brand-dark {
+        background: url("../../../assets/icons/brand-dark.png") center center
+          no-repeat;
+        background-size: cover;
+      }
+      .navbar-link {
+        color: $text-aux-color;
+        font-size: 16px;
+        cursor: pointer;
+        margin-right: 1em;
+        &:hover {
+          color: $text-hover-color;
+          cursor: pointer;
+        }
+      }
+      .navbar-link.active {
+        color: $text-hover-color;
+      }
+    }
+    .btn-change {
+      background: $background-btn-color;
+      box-shadow: 0px 0px 20px 3px #434343;
+      border-radius: 25px;
+      border: 0px;
+      font-size: 18px;
+      color: $text-aux-color;
+      padding: 8px 18px;
+      position: absolute;
+      cursor: pointer;
+      outline: none;
+      right: 25px;
+      top: 14px;
+      &:hover {
+        color: $text-hover-color;
+      }
+    }
+  }
+}

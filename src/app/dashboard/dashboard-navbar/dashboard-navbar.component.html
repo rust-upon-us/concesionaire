@@ -1,0 +1,42 @@
+<div class="main">
+  <nav class="navbar navbar-expand-md" #navbar>
+    <div class="container navbar-navigation">
+      <a class="navbar-brand navbar-brand" [routerLink]="['/dashboard']"
+        [ngClass]="{'navbar-brand-light': darkMode, 'navbar-brand-dark': !darkMode}"></a>
+      <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav justify-content-center col-12">
+          <li class="nav-item">
+            <a class="nav-link navbar-link" [routerLink]="['/dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-link" [routerLink]="['/dashboard/vehicle']"
+              routerLinkActive="active">Vehiculos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-link" [routerLink]="['/dashboard/client']" routerLinkActive="active">Clientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-link" [routerLink]="['/dashboard/billing']" routerLinkActive="active">Facturas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-link" [routerLink]="['/dashboard/financing']"
+              routerLinkActive="active">Financiacion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-link" [routerLink]="['/dashboard/hardware']"
+              routerLinkActive="active">Dispositivos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-link" [routerLink]="['/dashboard/news']" routerLinkActive="active">Noticias</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button type="button" class="btn-change" (click)="logout()">
+      <fa-icon [icon]="icon"></fa-icon>
+    </button>
+  </nav>
+</div>

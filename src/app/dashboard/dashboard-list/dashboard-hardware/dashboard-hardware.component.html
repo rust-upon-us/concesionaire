@@ -1,0 +1,37 @@
+<div class="main">
+  <form class="login-form" [formGroup]="hardwareForm" (ngSubmit)="onSubmit()">
+    <div class="input-control">
+      <label for="name" class="form-label">Nombre</label>
+      <input type="text" id="name" class="form-control" [ngClass]="{'is-invalid': form.name.errors && isSent}"
+        formControlName="name">
+      <div class="invalid-feedback">
+        Introduce el nombre del dispositivo
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="functionality" class="form-label">Funcionalidad</label>
+      <select id="functionality" class="form-select" [ngClass]="{'is-invalid': form.functionality.errors && isSent}"
+        formControlName="functionality">
+        <option value="" disabled>Selecciona la funcion del dispositivo</option>
+        <option value="confort">confort</option>
+        <option value="multimedia">multimedia</option>
+        <option value="luz y vista">luz y vista</option>
+        <option value="seguridad">seguridad</option>
+        <option value="otros">otros</option>
+      </select>
+      <div class="invalid-feedback">
+        Selecciona la funcionalidad que realiza el dispositivo
+      </div>
+    </div>
+    <div class="input-control control-block">
+      <label for="description" class="form-label">Descripcion</label>
+      <textarea id="description" class="form-control" [ngClass]="{'is-invalid': form.description.errors && isSent}"
+        formControlName="description" rows="5"></textarea>
+      <div class="invalid-feedback">
+        Introduce la descripcion del dispositivo
+      </div>
+    </div>
+
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
+</div>

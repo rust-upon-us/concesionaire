@@ -1,0 +1,25 @@
+@import "../../../app.component.scss";
+.main {
+  width: 100%;
+  background-color: $background-dashboard-color;
+
+  padding: 0px;
+  .nav-link {
+    transition: all 0.3s ease;
+    text-align: center;
+    display: block;
+    border: 0px;
+    cursor: pointer;
+    margin: 4px 4px;
+    padding: 4px 8px;
+    border-radius: 3px;
+    color: $text-aux-color;
+    font-size: $main-text-size;
+    background-color: $background-btn-color;
+    &:hover {
+      transition: all 0.3s ease;
+      color: $text-base-color;
+      background-color: $background-aux-color;
+    }
+  }
+}

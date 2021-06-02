@@ -1,0 +1,52 @@
+@import "../../../app.component.scss";
+.main {
+  width: 80%;
+  margin: 0px 10%;
+  padding: 50px 0px;
+  min-height: $port-view;
+  background-color: $background-dashboard-color;
+  form {
+    padding: 20px;
+    background-color: $background-aux-color;
+    border-radius: 20px;
+    .input-control {
+      width: 50%;
+      display: inline-table;
+      padding: 10px 20px 0px 20px;
+      .form-label {
+        font-size: $main-text-size;
+        color: $text-aux-color;
+        text-transform: uppercase;
+        text-align: center;
+        width: 100%;
+      }
+      .image {
+        background-size: cover;
+        border-radius: 15px;
+        position: relative;
+        margin: 20px 38% 0px 38%;
+        height: 150px;
+        width: 300px;
+        left: -10px;
+      }
+    }
+    .input-control.control-block{
+      width: 100%;
+    }
+    .submit-button {
+      transition: all 0.3s ease;
+      background-color: $input-background-main;
+      border: 2px solid $card-shadow;
+      border-radius: 15px;
+      font-size: $main-text-size;
+      color: $text-aux-color;
+      margin: 20px 30% 0px 30%;
+      padding: 10px;
+      width: 40%;
+      &:hover {
+        transition: all 0.3s ease;
+        background-color: $button-background-hover;
+      }
+    }
+  }
+}

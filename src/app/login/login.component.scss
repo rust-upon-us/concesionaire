@@ -1,0 +1,39 @@
+@import "../app.component.scss";
+
+.main {
+  padding: 100px 20% 0px 20%;
+  .login-form{
+    background-color: $background-card-color;
+    box-shadow: 0px 0px 20px 3px $card-shadow;
+    border: 2px solid $card-shadow;
+    border-radius: 15px;
+    padding: 20px 20px;
+
+    label{
+      width: 100%;
+      font-size: $main-text-size;
+      color: $text-hover-color;
+      text-align: center;
+    }
+    .input-control{
+      margin: 0px 20% 20px 20%;
+      width: 60%;
+    }
+    .submit-button{
+      transition: all 0.3s ease;
+      background-color: $input-background-main;
+      border: 2px solid $card-shadow;
+      border-radius: 15px;
+      font-size: $main-text-size;
+      color: $text-aux-color;
+      margin: 0px 30%;
+      padding: 10px;
+      width: 40%;
+      &:hover{
+        transition: all 0.3s ease;
+        background-color: $button-background-hover;
+      }
+
+    }
+  }
+}

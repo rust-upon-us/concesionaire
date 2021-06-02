@@ -1,0 +1,45 @@
+@import "../app.component.scss";
+.main {
+  background-color: $background-base-color;
+  .footer {
+    background: $background-aux-color;
+    position: relative;
+    padding-top: 0;
+    color: $text-base-color;
+    text-align: center;
+
+    .footer-header {
+      font-size: $main-text-size;
+      padding: 2px 0px;
+      display: block;
+    }
+    .footer-list {
+      list-style: none;
+      font-size: $aux-text-size;
+      padding: 0px;
+      margin-bottom: 10px;
+      .footer-link {
+        text-decoration: inherit;
+        color: $text-aux-color;
+        cursor: pointer;
+      }
+      .footer-link:hover {
+        color: $text-hover-color;
+      }
+    }
+    .social {
+      background: $background-btn-color;
+      border: 0px;
+      border-radius: 25px;
+      font-size: $main-text-size;
+      color: $text-aux-color;
+      padding: 6px 12px;
+      margin: 2px;
+      cursor: pointer;
+      outline: none;
+    }
+    .social:hover {
+      color: $text-hover-color;
+    }
+  }
+}

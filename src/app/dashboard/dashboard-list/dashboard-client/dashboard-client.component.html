@@ -1,0 +1,87 @@
+<div class="main">
+  <form class="login-form" [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+    <div class="input-control">
+      <label for="name" class="form-label">Nombre</label>
+      <input type="text" id="name" class="form-control" [ngClass]="{'is-invalid': form.name.errors && isSent}"
+        formControlName="name">
+      <div class="invalid-feedback">
+        Introduce el nombre del cliente
+      </div>
+    </div>
+
+    <div class="input-control">
+      <label for="surname" class="form-label">Apellidos</label>
+      <input type="text" id="surname" class="form-control" [ngClass]="{'is-invalid': form.surname.errors && isSent}"
+        formControlName="surname">
+      <div class="invalid-feedback">
+        Introduce los apellidos del cliente
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="nif" class="form-label">DNI</label>
+      <input type="text" id="nif" class="form-control" [ngClass]="{'is-invalid': form.nif.errors && isSent}"
+        formControlName="nif">
+      <div class="invalid-feedback">
+        Introduce el DNI del cliente
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="phone" class="form-label">Telefono</label>
+      <input type="number" id="phone" class="form-control" [ngClass]="{'is-invalid': form.phone.errors && isSent}"
+        formControlName="phone">
+      <div class="invalid-feedback">
+        Introduce el telefono del cliente
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="phonePrefix" class="form-label">Prefijo Telefonico</label>
+      <input type="number" id="phonePrefix" class="form-control" [ngClass]="{'is-invalid': form.phonePrefix.errors && isSent}"
+        formControlName="phonePrefix">
+      <div class="invalid-feedback">
+        Introduce el prefijo telefonico del cliente
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="country" class="form-label">Pais</label>
+      <input type="text" id="country" class="form-control" [ngClass]="{'is-invalid': form.country.errors && isSent}"
+        formControlName="country">
+      <div class="invalid-feedback">
+        Introduce el pais del cliente
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="province" class="form-label">Provincia</label>
+      <input type="text" id="province" class="form-control" [ngClass]="{'is-invalid': form.province.errors && isSent}"
+        formControlName="province">
+      <div class="invalid-feedback">
+        Introduce la provincia del cliente
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="location" class="form-label">Localidad</label>
+      <input type="text" id="location" class="form-control" [ngClass]="{'is-invalid': form.location.errors && isSent}"
+        formControlName="location">
+      <div class="invalid-feedback">
+        Introduce la localidad del cliente
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="cp" class="form-label">Codigo Postal</label>
+      <input type="number" id="cp" class="form-control" [ngClass]="{'is-invalid': form.cp.errors && isSent}"
+        formControlName="cp">
+      <div class="invalid-feedback">
+        Introduce el codigo postal del cliente
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="address" class="form-label">Direccion</label>
+      <input type="text" id="address" class="form-control" [ngClass]="{'is-invalid': form.address.errors && isSent}"
+        formControlName="address">
+      <div class="invalid-feedback">
+        Introduce la direccion del cliente
+      </div>
+    </div>
+
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
+</div>

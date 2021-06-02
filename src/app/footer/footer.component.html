@@ -1,0 +1,42 @@
+<div class="main">
+  <footer class="footer" #footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <span class="footer-header">Atencion Al Cliente</span>
+          <ul class="justify-content-center col-12 footer-list">
+            <li>
+              <a class="footer-link" [routerLink]="['/info']">Conocenos</a>
+            </li>
+            <li>
+              <a class="footer-link" [routerLink]="['/contact']">Contacto</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-4">
+          <span class="footer-header">Productos</span>
+          <ul class="justify-content-center col-12 footer-list">
+            <li>
+              <a class="footer-link" [routerLink]="['/productos/Automoviles']">Automoviles</a>
+            </li>
+            <li>
+              <a class="footer-link" [routerLink]="['/productos/Motocicletas']">Motocicletas</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-4">
+          <span class="footer-header">Redes Sociales</span>
+          <button type="button" class="social">
+            <fa-icon [icon]="linkedin"></fa-icon>
+          </button>
+          <button type="button" class="social">
+            <fa-icon [icon]="twitter"></fa-icon>
+          </button>
+          <button type="button" class="social">
+            <fa-icon [icon]="github"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

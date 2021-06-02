@@ -1,0 +1,22 @@
+<div class="main">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="input-control">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" id="username" class="form-control" [ngClass]="{'is-invalid': form.username.errors && isSent}"
+        formControlName="username">
+      <div class="invalid-feedback">
+        Introduce un nombre de usuario con 2 letras minimo
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" id="password" class="form-control" [ngClass]="{'is-invalid': form.password.errors && isSent}"
+        formControlName="password">
+      <div class="invalid-feedback">
+        introduce una contraseña con 6 letras minimo<br>
+        que contenga numeros mayusculas y minusculas
+      </div>
+    </div>
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,48 @@
+<div class="main">
+  <form class="login-form" [formGroup]="financingForm" (ngSubmit)="onSubmit()">
+    <div class="input-control">
+      <label for="source" class="form-label">Colaborador</label>
+      <input type="text" id="source" class="form-control" [ngClass]="{'is-invalid': form.source.errors && isSent}"
+        formControlName="source">
+      <div class="invalid-feedback">
+        Introduce el colaborador responsable de esta oferta
+      </div>
+    </div>
+
+    <div class="input-control">
+      <label for="effect" class="form-label">Efecto</label>
+      <input type="number" id="effect" class="form-control" [ngClass]="{'is-invalid': form.effect.errors && isSent}"
+        formControlName="effect">
+      <div class="invalid-feedback">
+        Introduce el descuento aplicable
+      </div>
+    </div>
+    <div class="input-control control-block">
+      <label for="description" class="form-label">Descripcion</label>
+      <textarea id="description" class="form-control" [ngClass]="{'is-invalid': form.description.errors && isSent}"
+        formControlName="description" rows="5"></textarea>
+      <div class="invalid-feedback">
+        Introduce la descripcion de la oferta
+      </div>
+    </div>
+
+    <div class="input-control">
+      <label for="release" class="form-label">Fecha de puesta en funcionamiento</label>
+      <input type="date" id="release" class="form-control" [ngClass]="{'is-invalid': form.release.errors && isSent}"
+        formControlName="release">
+      <div class="invalid-feedback">
+        Introduce una fecha en la que comienza la oferta
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="availability" class="form-label">Fecha de fin de oferta</label>
+      <input type="date" id="availability" class="form-control" [ngClass]="{'is-invalid': form.availability.errors && isSent}"
+        formControlName="availability">
+      <div class="invalid-feedback">
+        Introduce una fecha en la que finaliza la oferta
+      </div>
+    </div>
+
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
+</div>

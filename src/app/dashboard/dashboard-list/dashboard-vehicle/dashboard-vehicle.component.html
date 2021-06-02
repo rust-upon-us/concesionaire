@@ -1,0 +1,189 @@
+<div class="main">
+  <form class="login-form" [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+    <div class="input-control">
+      <label for="brand" class="form-label">Marca</label>
+      <input type="text" id="brand" class="form-control" [ngClass]="{'is-invalid': form.brand.errors && isSent}"
+        formControlName="brand">
+      <div class="invalid-feedback">
+        Introduce la marca a la que pertenece el vehiculo
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="model" class="form-label">Modelo</label>
+      <input type="text" id="model" class="form-control" [ngClass]="{'is-invalid': form.model.errors && isSent}"
+        formControlName="model">
+      <div class="invalid-feedback">
+        Introduce el modelo del vehiculo
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="cost" class="form-label">Precio</label>
+      <input type="number" id="cost" class="form-control" [ngClass]="{'is-invalid': form.cost.errors && isSent}"
+        formControlName="cost">
+      <div class="invalid-feedback">
+        Introduce el coste del vehiculo
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="mileage" class="form-label">kilometraje</label>
+      <input type="text" id="mileage" class="form-control" [ngClass]="{'is-invalid': form.mileage.errors && isSent}"
+        formControlName="mileage">
+      <div class="invalid-feedback">
+        Introduce el kilometraje del vehiculo
+      </div>
+    </div>
+    <div class="input-control control-block">
+      <label for="frame" class="form-label">Bastidor</label>
+      <input type="text" id="frame" class="form-control" [ngClass]="{'is-invalid': form.frame.errors && isSent}"
+        formControlName="frame">
+      <div class="invalid-feedback">
+        Introduce el bastidor del vehiculo
+      </div>
+    </div>
+    <div class="input-control image-block">
+      <label for="images" class="form-label">Imagenes</label>
+      <input type="text" id="images" class="form-control" [ngClass]="{'is-invalid': form.images.errors && isSent}"
+        formControlName="images">
+      <button type="button" class="button-add" (click)="addImage()">
+        <fa-icon [icon]="faPlus"></fa-icon>
+      </button>
+      <div class="invalid-feedback">
+        Introduce las imagenes asociadas al vehiculo
+      </div>
+      <div class="selected">
+        <div class="image" *ngFor="let item of imageList" [ngStyle]="{'background-image': 'url('+ item +')'}"
+          (click)="removeImage(item)"></div>
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="registration" class="form-label">Matricula</label>
+      <input type="text" id="registration" class="form-control"
+        [ngClass]="{'is-invalid': form.registration.errors && isSent}" formControlName="registration">
+      <div class="invalid-feedback">
+        Introduce la matricula del vehiculo
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="year" class="form-label">Año</label>
+      <input type="number" id="year" class="form-control" [ngClass]="{'is-invalid': form.year.errors && isSent}"
+        formControlName="year">
+      <div class="invalid-feedback">
+        Introduce el año de fabricacion del vehiculo
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="itv" class="form-label">Fecha de revision itv</label>
+      <input type="date" id="itv" class="form-control" [ngClass]="{'is-invalid': form.itv.errors && isSent}"
+        formControlName="itv">
+      <div class="invalid-feedback">
+        Introduce una fecha en la que se paso la ultima revision de itv
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="type" class="form-label">Tipo</label>
+      <select id="type" class="form-select" [ngClass]="{'is-invalid': form.type.errors && isSent}"
+        formControlName="type">
+        <option value="">Selecciona el tipo de vehiculo</option>
+        <option value="Automovil" [attr.selected]="vehicleObject && 'vehAutomovil' == vehicleObject.type">Automovil
+        </option>
+        <option value="Monovolumen" [attr.selected]="vehicleObject && 'Monovolumen' == vehicleObject.type">Monovolumen
+        </option>
+        <option value="Motocicletas" [attr.selected]="vehicleObject && 'Motocicletas' == vehicleObject.type">Motocicleta
+        </option>
+        <option value="Todoterreno" [attr.selected]="vehicleObject && 'Todoterreno' == vehicleObject.type">Todoterreno
+        </option>
+        <option value="Comerciales" [attr.selected]="vehicleObject && 'Comerciales' == vehicleObject.type">Comercial
+        </option>
+        <option value="Agrarios" [attr.selected]="vehicleObject && 'Agrarios' == vehicleObject.type">Agrario</option>
+      </select>
+      <div class="invalid-feedback">
+        Selecciona el tipo de vehiculo
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="doors" class="form-label">Puertas</label>
+      <input type="number" id="doors" class="form-control" [ngClass]="{'is-invalid': form.doors.errors && isSent}"
+        formControlName="doors">
+      <div class="invalid-feedback">
+        Introduce el numero de puertas del vehiculo
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="color" class="form-label">Color</label>
+      <input type="text" id="color" class="form-control" [ngClass]="{'is-invalid': form.color.errors && isSent}"
+        formControlName="color">
+      <div class="invalid-feedback">
+        Introduce el color del vehiculo
+      </div>
+    </div>
+
+    <div class="input-control">
+      <label for="displacement" class="form-label">Cilindrada</label>
+      <input type="text" id="displacement" class="form-control"
+        [ngClass]="{'is-invalid': form.displacement.errors && isSent}" formControlName="displacement">
+      <div class="invalid-feedback">
+        Introduce la cilindrada del vehiculo
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="gearbox" class="form-label">Caja de cambios</label>
+      <input type="text" id="gearbox" class="form-control" [ngClass]="{'is-invalid': form.gearbox.errors && isSent}"
+        formControlName="gearbox">
+      <div class="invalid-feedback">
+        Introduce el modelo de caja de cambios
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="fuel" class="form-label">Combustible</label>
+      <input type="text" id="fuel" class="form-control" [ngClass]="{'is-invalid': form.fuel.errors && isSent}"
+        formControlName="fuel">
+      <div class="invalid-feedback">
+        Introduce el tipo de combustible compatible
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="gasEmision" class="form-label">Emision de gases</label>
+      <input type="text" id="gasEmision" class="form-control"
+        [ngClass]="{'is-invalid': form.gasEmision.errors && isSent}" formControlName="gasEmision">
+      <div class="invalid-feedback">
+        Introduce el valor registrado de emision de gases del vehiculo
+      </div>
+    </div>
+    <div class="input-control control-block">
+      <label for="financing" class="form-label">Financiacion</label>
+      <select id="financing" class="form-select" [ngClass]="{'is-invalid': form.financing.errors && isSent}"
+        formControlName="financing" (change)="selectFinancing($event)">
+        <option value="" disabled>Selecciona las ofertas de financiacion</option>
+        <option *ngFor="let financing of financingList" [value]="financing._id">
+          {{financing._id}}: {{financing.source}}
+        </option>
+      </select>
+      <div class="invalid-feedback">
+        Selecciona los modelos de financiacion que son validos para el vehiculo
+      </div>
+      <div class="selected">
+        <button type="button" *ngFor="let item of financingSelected" class="selected-button"
+          (click)="selectFinancing(item._id)">{{item.source}}</button>
+      </div>
+    </div>
+    <div class="input-control control-block">
+      <label for="hardware" class="form-label">Dispositivos</label>
+      <select id="hardware" class="form-select" [ngClass]="{'is-invalid': form.hardware.errors && isSent}"
+        formControlName="hardware" (change)="selectHardware($event)">
+        <option value="" disabled>Selecciona los dispositivos compatibles</option>
+        <option *ngFor="let hardware of hardwareList" [value]="hardware._id">
+          {{hardware.functionality}}: {{hardware.name}}
+        </option>
+      </select>
+      <div class="invalid-feedback">
+        Selecciona los dispositivos instalados en el vehiculo
+      </div>
+      <div class="selected">
+        <button type="button" *ngFor="let item of hardwareSelected" class="selected-button"
+          (click)="selectHardware(item._id)">{{item.name}}</button>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
+</div>

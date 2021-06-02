@@ -1,0 +1,17 @@
+<div class="container main">
+  <div class="row">
+    <div class="col-4 card-box" *ngFor="let branch of branchs; index as i" data-aos="fade-zoom-in" data-aos-once="true"
+      [attr.data-aos-delay]="(i % 3) * aosDelay" data-aos-duration="2000">
+      <div class="card-body">
+        <a class="card-link" [routerLink]="[ branch.target ]">
+          <div class="card-img">
+            <fa-icon class="card-icon" [icon]="branch.image"></fa-icon>
+          </div>
+          <div class="card-fade">
+            <h2>{{ branch.detail }}</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

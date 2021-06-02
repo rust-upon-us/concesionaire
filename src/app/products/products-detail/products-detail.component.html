@@ -1,0 +1,145 @@
+<div class="main" data-aos="fade-zoom-in" data-aos-once="true" data-aos-delay="100" data-aos-duration="600">
+  <!-- Carousel -->
+  <div class="row">
+    <div id="carouselImages" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" *ngFor="let image of product.images; index as indice" data-bs-target="#carouselImages"
+          [attr.data-bs-slide-to]="indice" [ngClass]="{ active: indice == 0 }"
+          [attr.aria-current]="indice == 0"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item" *ngFor="let image of product.images; index as indice"
+          [ngClass]="{ active: indice == 0 }">
+          <div class="carousel-image" [ngStyle]="{'background-image': 'url('+ image +')'}"></div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselImages" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselImages" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <!-- Detalles Basicos -->
+  <div class="row">
+    <div class="card">
+      <div class="card-header">Detalles del vehiculo</div>
+      <div class="card-content">
+        <div class="col-6 record-containner">
+          <div class="record-description">
+            Marca
+          </div>
+          <div class="record-content">
+            {{product.brand}}
+          </div>
+        </div>
+        <div class="col-6 record-containner">
+          <div class="record-description">
+            Modelo
+          </div>
+          <div class="record-content">
+            {{product.model}}
+          </div>
+        </div>
+        <div class="col-6 record-containner">
+          <div class="record-description">
+            Año
+          </div>
+          <div class="record-content">
+            {{product.year}}
+          </div>
+        </div>
+        <div class="col-6 record-containner">
+          <div class="record-description">
+            Tipo de vehículo
+          </div>
+          <div class="record-content">
+            {{product.type}}
+          </div>
+        </div>
+        <div class="col-6 record-containner">
+          <div class="record-description">
+            ITV
+          </div>
+          <div class="record-content">
+            {{product.itv | date:'d/M/yyyy'}}
+          </div>
+        </div>
+        <div class="col-6 record-containner">
+          <div class="record-description">
+            Kilometraje
+          </div>
+          <div class="record-content">
+            {{product.mileage}} Km
+          </div>
+        </div>
+        <div class="col-6 record-containner">
+          <div class="record-description">
+            Matricula
+          </div>
+          <div class="record-content">
+            {{product.registration}}
+          </div>
+        </div>
+        <div class="col-6 record-containner">
+          <div class="record-description">
+            Numero de puertas
+          </div>
+          <div class="record-content">
+            {{product.doors}}
+          </div>
+        </div>
+        <div class="col-6 record-containner">
+          <div class="record-description">
+            Cilindrada
+          </div>
+          <div class="record-content">
+            {{product.displacement}} ccm
+          </div>
+        </div>
+        <div class="col-6 record-containner">
+          <div class="record-description">
+            Caja de Cambios
+          </div>
+          <div class="record-content">
+            {{product.gearbox}}
+          </div>
+        </div>
+        <div class="col-6 record-containner">
+          <div class="record-description">
+            Combustible
+          </div>
+          <div class="record-content">
+            {{product.fuel}}
+          </div>
+        </div>
+        <div class="col-6 record-containner">
+          <div class="record-description">
+            Emisiones de CO2
+          </div>
+          <div class="record-content">
+            {{product.gasEmision}} g/km
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="separator">
+      Dispositivos Instalados
+    </div>
+  </div>
+  <div class="row" *ngFor="let items of hardware">
+    <div class="card">
+      <div class="card-content">
+        <div class="record-list">{{items[0].functionality}}</div>
+        <div class="record-list-content">
+          <div class="col-6" *ngFor="let item of items">{{item.name}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

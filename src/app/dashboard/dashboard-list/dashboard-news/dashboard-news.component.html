@@ -1,0 +1,52 @@
+<div class="main">
+  <form class="login-form" [formGroup]="newsForm" (ngSubmit)="onSubmit()">
+    <div class="input-control">
+      <label for="title" class="form-label">Titulo</label>
+      <input type="text" id="title" class="form-control" [ngClass]="{'is-invalid': form.title.errors && isSent}"
+        formControlName="title">
+      <div class="invalid-feedback">
+        Introduce el titulo que sera mostrado
+      </div>
+    </div>
+    <div class="input-control">
+      <label for="link" class="form-label">Enlace</label>
+      <input type="text" id="link" class="form-control" [ngClass]="{'is-invalid': form.link.errors && isSent}"
+        formControlName="link">
+      <div class="invalid-feedback">
+        Introduce el enlace al que apunta la noticia
+      </div>
+    </div>
+    <div class="input-control control-block">
+      <label for="type" class="form-label">Visualizacion</label>
+      <select id="type" class="form-select" [ngClass]="{'is-invalid': form.type.errors && isSent}"
+        formControlName="type">
+        <option value="" disabled>Selecciona donde aparecera la noticia</option>
+        <option value="carousel">Carusel de fotografias</option>
+        <option value="card">Contenedores</option>
+      </select>
+      <div class="invalid-feedback">
+        Selecciona el lugar donde sera mostrada la noticia
+      </div>
+    </div>
+    <div class="input-control control-block">
+      <label for="message" class="form-label">Mensaje</label>
+      <textarea id="message" class="form-control" [ngClass]="{'is-invalid': form.message.errors && isSent}"
+        formControlName="message" rows="5"></textarea>
+      <div class="invalid-feedback">
+        Introduce el mensaje que sera mostrado.
+      </div>
+    </div>
+    <div class="input-control control-block">
+      <label for="image" class="form-label">Imagen</label>
+      <input type="url" id="image" class="form-control" [ngClass]="{'is-invalid': form.image.errors && isSent}"
+        formControlName="image" (change)="displayImage()">
+      <div class="invalid-feedback">
+        Introduce la imagen que sera mostrada en la noticia
+      </div>
+      <div class="image" *ngIf="newImage" [ngStyle]="{'background-image': 'url('+ newImage +')'}"></div>
+    </div>
+
+
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
+</div>

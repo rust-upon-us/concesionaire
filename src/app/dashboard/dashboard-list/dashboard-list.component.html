@@ -1,0 +1,262 @@
+<div class="main" data-aos="fade-zoom-in" data-aos-once="true" data-aos-delay="100" data-aos-duration="600" #main>
+  <div class="vertical-navigation">
+    <app-dashboard-navigation></app-dashboard-navigation>
+  </div>
+  <div class="list-containner" #containner>
+    <div *ngIf="isBilling">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <!-- Vehiculo -->
+        <ng-container matColumnDef="vehicle">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Vehiculo </th>
+          <td mat-cell *matCellDef="let element">
+            <a class="record-link" [routerLink]="['/dashboard/vehicle/' + element.vehicle._id]">
+              {{element.vehicle.brand}} {{element.vehicle.model}}
+            </a>
+          </td>
+        </ng-container>
+        <!-- Cliente -->
+        <ng-container matColumnDef="client">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </th>
+          <td mat-cell *matCellDef="let element">
+            <a class="record-link" [routerLink]="['/dashboard/client/' + element.client._id]">
+              {{element.client.nif}}
+            </a>
+          </td>
+        </ng-container>
+        <!-- Trabajador -->
+        <ng-container matColumnDef="worker">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Trabajador </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.worker.name}} {{element.worker.surname}}
+          </td>
+        </ng-container>
+        <!-- Costes -->
+        <ng-container matColumnDef="cost">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Costes </th>
+          <td mat-cell *matCellDef="let element"> {{element.cost}} € </td>
+        </ng-container>
+        <!-- Acciones -->
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+          <td mat-cell *matCellDef="let element">
+            <a [routerLink]="['/dashboard/billing/' + element._id]">
+              Editar
+            </a>
+            <button type="button" (click)="deleteElement(element._id)">
+              Borrar
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div #content></div>
+      <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="pagination($event)">
+      </mat-paginator>
+    </div>
+    <div *ngIf="isClient">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <!-- NIF -->
+        <ng-container matColumnDef="nif">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> DNI </th>
+          <td mat-cell *matCellDef="let element"> {{element.nif}} </td>
+        </ng-container>
+        <!-- Nombre -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} {{element.surname}}</td>
+        </ng-container>
+        <!-- Telefono -->
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Teléfono </th>
+          <td mat-cell *matCellDef="let element">+{{element.phonePrefix}} {{element.phone}} </td>
+        </ng-container>
+
+        <!-- Acciones -->
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+          <td mat-cell *matCellDef="let element">
+            <a [routerLink]="['/dashboard/client/' + element._id]">
+              Editar
+            </a>
+            <button type="button" (click)="deleteElement(element._id)">
+              Borrar
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div #content></div>
+      <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="pagination($event)">
+      </mat-paginator>
+    </div>
+    <div *ngIf="isFinancing">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <!-- Origen -->
+        <ng-container matColumnDef="source">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Fuente </th>
+          <td mat-cell *matCellDef="let element"> {{element.source}} </td>
+        </ng-container>
+        <!-- Efecto -->
+        <ng-container matColumnDef="effect">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Efecto </th>
+          <td mat-cell *matCellDef="let element"> {{element.effect}} </td>
+        </ng-container>
+        <!-- Comienzo -->
+        <ng-container matColumnDef="release">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Origen </th>
+          <td mat-cell *matCellDef="let element"> {{element.release | date:'d/M/yyyy'}} </td>
+        </ng-container>
+        <!-- Disponibilidad -->
+        <ng-container matColumnDef="availability">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Disponibilidad </th>
+          <td mat-cell *matCellDef="let element"> {{element.availability | date:'d/M/yyyy'}} </td>
+        </ng-container>
+        <!-- Acciones -->
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+          <td mat-cell *matCellDef="let element">
+            <a [routerLink]="['/dashboard/financing/' + element._id]">
+              Editar
+            </a>
+            <button type="button" (click)="deleteElement(element._id)">
+              Borrar
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div #content></div>
+      <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="pagination($event)">
+      </mat-paginator>
+    </div>
+    <div *ngIf="isHardware">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <!-- Nombre -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <!-- Funcionalidad -->
+        <ng-container matColumnDef="functionality">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Funcionalidad </th>
+          <td mat-cell *matCellDef="let element"> {{element.functionality}} </td>
+        </ng-container>
+        <!-- Descripcion -->
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
+          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+        <!-- Acciones -->
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+          <td mat-cell *matCellDef="let element">
+            <a [routerLink]="['/dashboard/hardware/' + element._id]">
+              Editar
+            </a>
+            <button type="button" (click)="deleteElement(element._id)">
+              Borrar
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div #content></div>
+      <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="pagination($event)">
+      </mat-paginator>
+    </div>
+    <div *ngIf="isNews">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <!-- Titulo -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
+          <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+        </ng-container>
+        <!-- Tipo -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
+          <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+        </ng-container>
+        <!-- Enlace -->
+        <ng-container matColumnDef="link">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Enlace </th>
+          <td mat-cell *matCellDef="let element"> {{element.link}} </td>
+        </ng-container>
+        <!-- Imagen -->
+        <ng-container matColumnDef="image">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Imagen </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="image" [ngStyle]="{'background-image': 'url('+ element.image+')'}"></div>
+          </td>
+        </ng-container>
+        <!-- Acciones -->
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+          <td mat-cell *matCellDef="let element">
+            <a [routerLink]="['/dashboard/news/' + element._id]">
+              Editar
+            </a>
+            <button type="button" (click)="deleteElement(element._id)">
+              Borrar
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div #content></div>
+      <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="pagination($event)">
+      </mat-paginator>
+    </div>
+    <div *ngIf="isVehicle">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <!-- Vehiculo -->
+        <ng-container matColumnDef="model">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Vehiculo </th>
+          <td mat-cell *matCellDef="let element">{{element.brand}} {{element.model}} </td>
+        </ng-container>
+        <!-- Matricula -->
+        <ng-container matColumnDef="registration">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Matricula </th>
+          <td mat-cell *matCellDef="let element"> {{element.registration}} </td>
+        </ng-container>
+        <!-- Kilometraje -->
+        <ng-container matColumnDef="mileage">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Kilometraje </th>
+          <td mat-cell *matCellDef="let element"> {{element.mileage}} </td>
+        </ng-container>
+        <!-- Tipo -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
+          <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+        </ng-container>
+        <!-- Acciones -->
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+          <td mat-cell *matCellDef="let element">
+            <a [routerLink]="['/dashboard/vehicle/' + element._id]">
+              Editar
+            </a>
+            <button type="button" (click)="deleteElement(element._id)">
+              Borrar
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div #content></div>
+      <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="pagination($event)">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

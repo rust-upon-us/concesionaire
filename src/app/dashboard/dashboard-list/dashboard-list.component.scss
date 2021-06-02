@@ -1,0 +1,81 @@
+@import "../../app.component.scss";
+.main {
+  width: 100%;
+  background-color: $background-dashboard-color;
+  min-height: calc(100vh - 9em);
+  .vertical-navigation {
+    display: inline-grid;
+    width: 20%;
+    top: 0px;
+  }
+  .list-containner {
+    display: inline-grid;
+    width: 80%;
+    border-left: 3px solid $text-decoration;
+    table {
+      width: 100%;
+      background-color: $background-dashboard-color;
+      box-shadow: none;
+      th {
+        color: $text-base-color;
+        font-size: $main-text-size;
+        border-bottom: 1px solid $text-decoration;
+      }
+      td {
+        color: $text-focus-color;
+        border-bottom: 1px solid $card-shadow;
+        font-size: $def-text-size;
+        height: fit-content;
+        .record-link {
+          transition: all 0.3s ease;
+          font-size: $def-text-size;
+          color: $text-focus-color;
+          border-radius: 0px;
+          background: none;
+          cursor: pointer;
+          margin: 4px 4px;
+          padding: 0px;
+          border: 0px;
+          &:hover {
+            transition: all 0.3s ease;
+            color: $text-base-color;
+          }
+        }
+        .image {
+          background-size: cover;
+          border-radius: 15px;
+          position: relative;
+          height: 75px;
+          width: auto;
+          left: -10px;
+        }
+        a,
+        button {
+          display: inline-block;
+          border: 0px;
+          cursor: pointer;
+          margin: 4px 4px;
+          padding: 4px 8px;
+          border-radius: 10px;
+          color: $text-aux-color;
+          font-size: $main-text-size;
+        }
+        a {
+          text-decoration: none;
+          background: $button-background-edit;
+        }
+        button {
+          background: $button-background-delete;
+        }
+      }
+      th.mat-sort-header-sorted {
+        color: black;
+      }
+    }
+    mat-paginator {
+      background-color: $background-dashboard-color;
+      font-size: $def-text-size;
+      color: $text-focus-color;
+    }
+  }
+}
