@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" data-aos="fade-zoom-in" data-aos-once="true" data-aos-delay="100" data-aos-duration="600">
   <form class="login-form" [formGroup]="clientForm" (ngSubmit)="onSubmit()">
     <div class="input-control">
       <label for="name" class="form-label">Nombre</label>
@@ -35,8 +35,8 @@
     </div>
     <div class="input-control">
       <label for="phonePrefix" class="form-label">Prefijo Telefonico</label>
-      <input type="number" id="phonePrefix" class="form-control" [ngClass]="{'is-invalid': form.phonePrefix.errors && isSent}"
-        formControlName="phonePrefix">
+      <input type="number" id="phonePrefix" class="form-control"
+        [ngClass]="{'is-invalid': form.phonePrefix.errors && isSent}" formControlName="phonePrefix">
       <div class="invalid-feedback">
         Introduce el prefijo telefonico del cliente
       </div>
@@ -81,7 +81,7 @@
         Introduce la direccion del cliente
       </div>
     </div>
-
-    <button type="submit" class="submit-button">Submit</button>
+    <button type="submit" class="submit-button" *ngIf="id == 'new'">Registrar</button>
+    <button type="submit" class="submit-button" *ngIf="id !== 'new'">Actualizar</button>
   </form>
 </div>

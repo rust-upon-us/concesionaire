@@ -25,7 +25,7 @@
       }
       .navbar-link {
         color: $text-aux-color;
-        font-size: 16px;
+        font-size: $title3-text-size;
         cursor: pointer;
         margin-right: 1em;
         &:hover {

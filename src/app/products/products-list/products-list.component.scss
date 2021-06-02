@@ -1,6 +1,7 @@
 @import "../../app.component.scss";
 .container {
   background-color: $background-card-color;
+  min-height: $port-view;
   .card-box {
     border: 1px solid $background-card-hover;
     transition: all 0.3s ease;

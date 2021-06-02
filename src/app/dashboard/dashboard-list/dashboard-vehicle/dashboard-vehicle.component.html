@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" data-aos="fade-zoom-in" data-aos-once="true" data-aos-delay="100" data-aos-duration="600">
   <form class="login-form" [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
     <div class="input-control">
       <label for="brand" class="form-label">Marca</label>
@@ -84,17 +84,17 @@
       <select id="type" class="form-select" [ngClass]="{'is-invalid': form.type.errors && isSent}"
         formControlName="type">
         <option value="">Selecciona el tipo de vehiculo</option>
-        <option value="Automovil" [attr.selected]="vehicleObject && 'vehAutomovil' == vehicleObject.type">Automovil
+        <option value="Automovil">Automovil
         </option>
-        <option value="Monovolumen" [attr.selected]="vehicleObject && 'Monovolumen' == vehicleObject.type">Monovolumen
+        <option value="Monovolumen">Monovolumen
         </option>
-        <option value="Motocicletas" [attr.selected]="vehicleObject && 'Motocicletas' == vehicleObject.type">Motocicleta
+        <option value="Motocicletas">Motocicleta
         </option>
-        <option value="Todoterreno" [attr.selected]="vehicleObject && 'Todoterreno' == vehicleObject.type">Todoterreno
+        <option value="Todoterreno">Todoterreno
         </option>
-        <option value="Comerciales" [attr.selected]="vehicleObject && 'Comerciales' == vehicleObject.type">Comercial
+        <option value="Comerciales">Comercial
         </option>
-        <option value="Agrarios" [attr.selected]="vehicleObject && 'Agrarios' == vehicleObject.type">Agrario</option>
+        <option value="Agrarios">Agrario</option>
       </select>
       <div class="invalid-feedback">
         Selecciona el tipo de vehiculo
@@ -183,7 +183,7 @@
           (click)="selectHardware(item._id)">{{item.name}}</button>
       </div>
     </div>
-
-    <button type="submit" class="submit-button">Submit</button>
+    <button type="submit" class="submit-button" *ngIf="id == 'new'">Registrar</button>
+    <button type="submit" class="submit-button" *ngIf="id !== 'new'">Actualizar</button>
   </form>
 </div>

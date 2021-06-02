@@ -46,6 +46,7 @@ export class DashboardListComponent implements AfterViewInit {
   pageHeight = 0;
   elementHeight = 0;
   auxHeight;
+  delay = 200;
 
   length = 0;
   pageSize = 10;
@@ -77,7 +78,6 @@ export class DashboardListComponent implements AfterViewInit {
   ) {}
 
   ngOnInit() {
-    Aos.init();
     if (this.router.url === '/dashboard/billing') {
       this.isBilling = true;
     } else {
@@ -114,12 +114,8 @@ export class DashboardListComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    /*this.dataSource.filterPredicate = (data: PeriodicElement, filter: string) =>
-      !filter || data.name == filter;
-
-    this.dataSource.filter = 'Hydrogen';*/
+    this.dataSource.sort = this.sort;
   }
 
   getData() {
@@ -139,6 +135,7 @@ export class DashboardListComponent implements AfterViewInit {
           ];
           this.calcHeight(this.dataSource.data.length);
           this.length = this.billingList.length;
+          this.calcDelay();
         },
         (error) => {
           console.log(error);
@@ -155,6 +152,7 @@ export class DashboardListComponent implements AfterViewInit {
           this.displayedColumns = ['nif', 'name', 'phone', '_id'];
           this.calcHeight(this.dataSource.data.length);
           this.length = this.clientList.length;
+          this.calcDelay();
         },
         (error) => {
           console.log(error);
@@ -177,6 +175,7 @@ export class DashboardListComponent implements AfterViewInit {
           ];
           this.calcHeight(this.dataSource.data.length);
           this.length = this.financingList.length;
+          this.calcDelay();
         },
         (error) => {
           console.log(error);
@@ -198,6 +197,7 @@ export class DashboardListComponent implements AfterViewInit {
           ];
           this.calcHeight(this.dataSource.data.length);
           this.length = this.hardwareList.length;
+          this.calcDelay();
         },
         (error) => {
           console.log(error);
@@ -214,6 +214,7 @@ export class DashboardListComponent implements AfterViewInit {
           this.displayedColumns = ['title', 'type', 'link', 'image', '_id'];
           this.calcHeight(this.dataSource.data.length);
           this.length = this.newsList.length;
+          this.calcDelay();
         },
         (error) => {
           console.log(error);
@@ -236,6 +237,7 @@ export class DashboardListComponent implements AfterViewInit {
           ];
           this.calcHeight(this.dataSource.data.length);
           this.length = this.vehicleList.length;
+          this.calcDelay();
         },
         (error) => {
           console.log(error);
@@ -335,11 +337,202 @@ export class DashboardListComponent implements AfterViewInit {
       );
     }
     if (this.isNews) {
-      this.dataSource = new MatTableDataSource(
-        this.newsList.slice(start, end)
-      );
+      this.dataSource = new MatTableDataSource(this.newsList.slice(start, end));
     }
     if (this.isVehicle) {
+      this.dataSource = new MatTableDataSource(
+        this.vehicleList.slice(start, end)
+      );
+    }
+  }
+
+  sortChange(event) {
+    console.log(event);
+
+    let active = event.active;
+    let order = event.direction;
+    let start = this.paginator.pageIndex * this.paginator.pageSize;
+    let end = start + this.paginator.pageSize;
+
+    if (this.isBilling) {
+      if (order == '') {
+        this.billingList.sort((a, b) => a._id.localeCompare(b._id));
+      } else {
+        if (active == 'vehicle') {
+          this.billingList = this.billingList.sort((a, b) =>
+            (a.vehicle.brand + '' + a.vehicle.model).localeCompare(
+              b.vehicle.brand + '' + b.vehicle.model
+            )
+          );
+        }
+        if (active == 'client') {
+          this.billingList = this.billingList.sort((a, b) =>
+            a.client.nif.localeCompare(b.client.nif)
+          );
+        }
+        if (active == 'worker') {
+          this.billingList = this.billingList.sort((a, b) =>
+            (a.worker.name + ' ' + a.worker.surname).localeCompare(
+              b.worker.name + ' ' + b.worker.surname
+            )
+          );
+        }
+        if (active == 'cost') {
+          this.billingList = this.billingList.sort((a, b) => {
+            return a.cost - b.cost;
+          });
+        }
+        if (order == 'desc') {
+          this.billingList = this.billingList.reverse();
+        }
+      }
+      this.dataSource = new MatTableDataSource(
+        this.billingList.slice(start, end)
+      );
+    }
+    if (this.isClient) {
+      if (order == '') {
+        this.clientList.sort((a, b) => a._id.localeCompare(b._id));
+      } else {
+        if (active == 'nif') {
+          this.clientList = this.clientList.sort((a, b) =>
+            a.nif.localeCompare(b.nif)
+          );
+        }
+        if (active == 'name') {
+          this.clientList = this.clientList.sort((a, b) =>
+            (a.name + '' + a.surname).localeCompare(b.name + '' + b.surname)
+          );
+        }
+        if (active == 'phone') {
+          this.clientList = this.clientList.sort((a, b) =>
+            (a.phonePrefix + '' + a.phone).localeCompare(
+              b.phonePrefix + '' + b.phone
+            )
+          );
+        }
+        if (order == 'desc') {
+          this.clientList = this.clientList.reverse();
+        }
+      }
+      this.dataSource = new MatTableDataSource(
+        this.clientList.slice(start, end)
+      );
+    }
+    if (this.isFinancing) {
+      if (order == '') {
+        this.financingList.sort((a, b) => a._id.localeCompare(b._id));
+      } else {
+        if (active == 'source') {
+          this.financingList = this.financingList.sort((a, b) =>
+            a.source.localeCompare(b.source)
+          );
+        }
+        if (active == 'effect') {
+          this.financingList = this.financingList.sort((a, b) => {
+            return a.effect - b.effect;
+          });
+        }
+        if (active == 'release') {
+          this.financingList = this.financingList.sort((a, b) => {
+            return <any>new Date(a.release) - <any>new Date(b.release);
+          });
+        }
+        if (active == 'availability') {
+          this.financingList = this.financingList.sort((a, b) => {
+            return (
+              <any>new Date(a.availability) - <any>new Date(b.availability)
+            );
+          });
+        }
+        if (order == 'desc') {
+          this.financingList = this.financingList.reverse();
+        }
+      }
+      this.dataSource = new MatTableDataSource(
+        this.financingList.slice(start, end)
+      );
+    }
+    if (this.isHardware) {
+      if (order == '') {
+        this.hardwareList.sort((a, b) => a._id.localeCompare(b._id));
+      } else {
+        if (active == 'name') {
+          this.hardwareList = this.hardwareList.sort((a, b) =>
+            a.name.localeCompare(b.name)
+          );
+        }
+        if (active == 'functionality') {
+          this.hardwareList = this.hardwareList.sort((a, b) =>
+            a.functionality.localeCompare(b.functionality)
+          );
+        }
+        if (active == 'description') {
+          this.hardwareList = this.hardwareList.sort((a, b) =>
+            a.description.localeCompare(b.description)
+          );
+        }
+        if (order == 'desc') {
+          this.hardwareList = this.hardwareList.reverse();
+        }
+      }
+      this.dataSource = new MatTableDataSource(
+        this.hardwareList.slice(start, end)
+      );
+    }
+    if (this.isNews) {
+      if (order == '') {
+        this.newsList.sort((a, b) => a._id.localeCompare(b._id));
+      } else {
+        if (active == 'title') {
+          this.newsList = this.newsList.sort((a, b) =>
+            a.title.localeCompare(b.title)
+          );
+        }
+        if (active == 'type') {
+          this.newsList = this.newsList.sort((a, b) =>
+            a.type.localeCompare(b.type)
+          );
+        }
+        if (active == 'link') {
+          this.newsList = this.newsList.sort((a, b) =>
+            a.link.localeCompare(b.link)
+          );
+        }
+        if (order == 'desc') {
+          this.newsList = this.newsList.reverse();
+        }
+      }
+      this.dataSource = new MatTableDataSource(this.newsList.slice(start, end));
+    }
+    if (this.isVehicle) {
+      if (order == '') {
+        this.vehicleList.sort((a, b) => a._id.localeCompare(b._id));
+      } else {
+        if (active == 'model') {
+          this.vehicleList = this.vehicleList.sort((a, b) =>
+            (a.brand + '' + a.model).localeCompare(b.brand + '' + b.model)
+          );
+        }
+        if (active == 'registration') {
+          this.vehicleList = this.vehicleList.sort((a, b) =>
+            a.registration.localeCompare(b.registration)
+          );
+        }
+        if (active == 'mileage') {
+          this.vehicleList = this.vehicleList.sort((a, b) => {
+            return a.mileage - b.mileage;
+          });
+        }
+        if (active == 'type') {
+          this.vehicleList = this.vehicleList.sort((a, b) =>
+            a.type.localeCompare(b.type)
+          );
+        }
+        if (order == 'desc') {
+          this.vehicleList = this.vehicleList.reverse();
+        }
+      }
       this.dataSource = new MatTableDataSource(
         this.vehicleList.slice(start, end)
       );
@@ -355,6 +548,14 @@ export class DashboardListComponent implements AfterViewInit {
     }
     this.auxHeight =
       ((this.pageHeight - this.elementHeight) / 10) * (10 - elements);
+    console.log(
+      this.pageHeight + ' ' + this.elementHeight + ' ' + this.auxHeight
+    );
     this.content.nativeElement.style = 'height: ' + this.auxHeight + 'px ';
+  }
+
+  calcDelay() {
+    this.delay = 100 + (this.length / 10) * 200;
+    Aos.init();
   }
 }

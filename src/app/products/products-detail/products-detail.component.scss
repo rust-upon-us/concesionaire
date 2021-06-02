@@ -47,9 +47,9 @@
         display: inline-flex;
         .record-description {
           background-color: $background-card-content;
-          font-size: $main-text-size;
+          font-size: $title2-text-size;
           color: $text-hover-color;
-          font-weight: bold;
+          font-weight:500;
           padding: 10px;
           width: 40%;
           &::after {
@@ -65,15 +65,16 @@
         }
       }
       .record-list {
-        font-size: $main-text-size;
+        font-size: $title2-text-size;
         color: $text-hover-color;
         text-align: center;
-        font-weight: bold;
+        font-weight:500;
         padding: 20px;
         width: 25%;
       }
       .record-list-content {
         background-color: $background-card-content;
+        font-size: $def-text-size;
         width: calc(75% - 4px);
         flex-wrap: wrap;
         display: flex;

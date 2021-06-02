@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as Aos from 'aos';
 import { Hardware } from './../../../models/hardware.model';
 import { HardwareService } from './../../../services/hardware.service';
 
@@ -41,6 +42,7 @@ export class DashboardHardwareComponent implements OnInit {
         this.getData();
       }
     });
+    Aos.init();
   }
 
   get form(): any {

@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as Aos from 'aos';
 import { Financing } from './../../../models/financing.model';
 import { FinancingService } from './../../../services/financing.service';
 
@@ -45,6 +46,7 @@ export class DashboardFinancingComponent implements OnInit {
         this.getData();
       }
     });
+    Aos.init();
   }
 
   get form(): any {

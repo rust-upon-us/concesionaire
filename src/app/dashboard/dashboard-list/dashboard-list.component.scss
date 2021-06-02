@@ -2,7 +2,7 @@
 .main {
   width: 100%;
   background-color: $background-dashboard-color;
-  min-height: calc(100vh - 9em);
+  min-height: $port-view;
   .vertical-navigation {
     display: inline-grid;
     width: 20%;
@@ -11,6 +11,7 @@
   .list-containner {
     display: inline-grid;
     width: 80%;
+    min-height: $port-view;
     border-left: 3px solid $text-decoration;
     table {
       width: 100%;
@@ -51,6 +52,7 @@
         }
         a,
         button {
+          transition: all 0.3s ease;
           display: inline-block;
           border: 0px;
           cursor: pointer;
@@ -62,10 +64,19 @@
         }
         a {
           text-decoration: none;
-          background: $button-background-edit;
+          background: $button-background-edit-hover;
+          &:hover {
+            transition: all 0.3s ease;
+            color: $text-hover-color;
+            background: $button-background-edit;
+          }
         }
         button {
-          background: $button-background-delete;
+          background: $button-background-delete-hover;
+          &:hover {
+            transition: all 0.3s ease;
+            background: $button-background-delete;
+          }
         }
       }
       th.mat-sort-header-sorted {

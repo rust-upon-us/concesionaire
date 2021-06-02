@@ -14,10 +14,10 @@
       </div>
     </div>
   </div>
-
-  <p>{{ipsum}}</p>
-
   <div class="content">
+    <div class="message">
+      <p>{{ipsum}}</p>
+    </div>
     <div *ngFor="let news of newsCard; index as indice"
       [attr.data-aos]="((indice % 2) == 0) ? 'fade-right' : 'fade-left'" data-aos-once="true" data-aos-delay="200"
       data-aos-duration="1200" class="aux-container">

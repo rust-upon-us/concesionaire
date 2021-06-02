@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as Aos from 'aos';
 import { Client } from './../../../models/client.model';
 import { ClientService } from './../../../services/client.service';
 
@@ -48,6 +49,8 @@ export class DashboardClientComponent implements OnInit {
         this.getData();
       }
     });
+
+    Aos.init();
   }
 
   get form(): any {

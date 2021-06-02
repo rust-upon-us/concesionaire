@@ -14,6 +14,7 @@ import { Financing } from './../../../models/financing.model';
 import { FinancingService } from './../../../services/financing.service';
 import { DatePipe } from '@angular/common';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import * as Aos from 'aos';
 
 @Component({
   selector: 'app-dashboard-vehicle',
@@ -69,10 +70,9 @@ export class DashboardVehicleComponent implements OnInit {
       this.id = params.id;
       if (params.id != 'new') {
         this.getData();
-      } else {
-        this.getDataForms();
       }
     });
+    Aos.init();
   }
 
   get form(): any {
@@ -89,21 +89,20 @@ export class DashboardVehicleComponent implements OnInit {
           cost: this.vehicleObject.cost,
           frame: this.vehicleObject.frame,
           mileage: this.vehicleObject.mileage,
-          registration: this.vehicleObject.registration,
-          year: this.vehicleObject.year,
+          registration: this.vehicleObject.registration + '',
+          year: this.vehicleObject.year + '',
           itv: this.datePipe.transform(this.vehicleObject.itv, 'yyyy-MM-dd'),
-          type: this.vehicleObject.type,
+          type: this.vehicleObject.type + '',
           images: '',
-          doors: this.vehicleObject.doors,
-          color: this.vehicleObject.color,
-          displacement: this.vehicleObject.displacement,
-          gearbox: this.vehicleObject.gearbox,
-          fuel: this.vehicleObject.fuel,
-          gasEmision: this.vehicleObject.gasEmision,
+          doors: this.vehicleObject.doors + '',
+          color: this.vehicleObject.color + '',
+          displacement: this.vehicleObject.displacement + '',
+          gearbox: this.vehicleObject.gearbox + '',
+          fuel: this.vehicleObject.fuel + '',
+          gasEmision: this.vehicleObject.gasEmision + '',
           financing: '',
           hardware: '',
         });
-        console.log(this.vehicleObject);
         this.hardwareSelected = this.vehicleObject.hardware;
         this.financingSelected = this.vehicleObject.financing;
         this.imageList = this.vehicleObject.images;
@@ -112,7 +111,6 @@ export class DashboardVehicleComponent implements OnInit {
         console.log(error);
       }
     );
-    this.getDataForms();
   }
 
   getDataForms() {
@@ -135,7 +133,6 @@ export class DashboardVehicleComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.financingList);
     this.isSent = true;
     // Process checkout data here
     if (!this.vehicleForm.invalid) {

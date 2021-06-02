@@ -13,28 +13,40 @@
             </li>
           </ul>
         </div>
-        <div class="col-4">
+        <div class="col-4 overflow">
           <span class="footer-header">Productos</span>
           <ul class="justify-content-center col-12 footer-list">
             <li>
-              <a class="footer-link" [routerLink]="['/productos/Automoviles']">Automoviles</a>
+              <a class="footer-link" [routerLink]="['/productos/Automovil']">Automoviles</a>
+            </li>
+            <li>
+              <a class="footer-link" [routerLink]="['/productos/Monovolumen']">Monovolumenes</a>
             </li>
             <li>
               <a class="footer-link" [routerLink]="['/productos/Motocicletas']">Motocicletas</a>
+            </li>
+            <li>
+              <a class="footer-link" [routerLink]="['/productos/Todoterreno']">Todoterrenos</a>
+            </li>
+            <li>
+              <a class="footer-link" [routerLink]="['/productos/Comerciales']">Comerciales</a>
+            </li>
+            <li>
+              <a class="footer-link" [routerLink]="['/productos/Agrarios']">Agrarios</a>
             </li>
           </ul>
         </div>
         <div class="col-4">
           <span class="footer-header">Redes Sociales</span>
-          <button type="button" class="social">
+          <a target="_blank" href="https://www.linkedin.com/in/christian-cardo-au%C3%B1%C3%B3n-29a50a187/" class="social">
             <fa-icon [icon]="linkedin"></fa-icon>
-          </button>
-          <button type="button" class="social">
+          </a>
+          <a target="_self" href="#" class="social">
             <fa-icon [icon]="twitter"></fa-icon>
-          </button>
-          <button type="button" class="social">
+          </a>
+          <a target="_blank" href="https://github.com/rust-upon-us" class="social">
             <fa-icon [icon]="github"></fa-icon>
-          </button>
+          </a>
         </div>
       </div>
     </div>

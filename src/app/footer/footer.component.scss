@@ -1,15 +1,27 @@
 @import "../app.component.scss";
 .main {
   background-color: $background-base-color;
+  height: 5em;
   .footer {
     background: $background-aux-color;
-    position: relative;
-    padding-top: 0;
     color: $text-base-color;
+    position: relative;
     text-align: center;
-
+    padding-top: 0;
+    .overflow {
+      overflow-x: hidden;
+      .footer-header {
+        width: calc(100% + 15px);
+      }
+      .footer-list {
+        height: 5em;
+        width: calc(100% + 30px);
+        overflow-y: scroll;
+        position: relative;
+      }
+    }
     .footer-header {
-      font-size: $main-text-size;
+      font-size: $title3-text-size;
       padding: 2px 0px;
       display: block;
     }
@@ -19,27 +31,30 @@
       padding: 0px;
       margin-bottom: 10px;
       .footer-link {
+        font-size: $def-text-size;
         text-decoration: inherit;
         color: $text-aux-color;
         cursor: pointer;
-      }
-      .footer-link:hover {
-        color: $text-hover-color;
+        &:hover {
+          color: $text-hover-color;
+        }
       }
     }
     .social {
       background: $background-btn-color;
-      border: 0px;
-      border-radius: 25px;
-      font-size: $main-text-size;
+      font-size: $title3-text-size;
       color: $text-aux-color;
-      padding: 6px 12px;
-      margin: 2px;
+      border-radius: 25px;
+      position: relative;
+      padding: 8px 16px;
       cursor: pointer;
       outline: none;
-    }
-    .social:hover {
-      color: $text-hover-color;
+      margin: 3px;
+      border: 0px;
+      top: 10px;
+      &:hover {
+        color: $text-hover-color;
+      }
     }
   }
 }

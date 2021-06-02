@@ -17,6 +17,7 @@ import { Vehicle } from './../../../models/vehicle.model';
 import { VehicleService } from './../../../services/vehicle.service';
 import { Worker } from './../../../models/worker.model';
 import { WorkerService } from './../../../services/worker.service';
+import * as Aos from 'aos';
 
 @Component({
   selector: 'app-dashboard-billing',
@@ -62,10 +63,10 @@ export class DashboardBillingComponent implements OnInit {
       this.id = params.id;
       if (params.id != 'new') {
         this.getData();
-      } else {
-        this.getDataForms();
       }
     });
+
+    Aos.init();
   }
 
   getData() {
@@ -85,7 +86,6 @@ export class DashboardBillingComponent implements OnInit {
         console.log(error);
       }
     );
-    this.getDataForms();
   }
 
   getDataForms() {

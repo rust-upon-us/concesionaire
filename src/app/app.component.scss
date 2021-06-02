@@ -8,11 +8,15 @@ $text-focus-color: #0a0a0a;
 $text-fade-color: rgba(216, 86, 0, 0.8);
 $text-decoration: rgba(103, 103, 103, 0.7);;
 
+$title-text-size: 1.8em;
+$title2-text-size: 1.5em;
+$title3-text-size: 1.4em;
 $main-text-size: 1.2em;
 $aux-text-size: 0.9em;
-$def-text-size: 1em;
+$def-text-size: 1.2em;
 
-$port-view: calc(100vh - 9.2rem);
+$port-view: calc(100vh - 12.2em + 1px);
+$port-view-list: calc(100vh - 18.2em + 2px);
 
 $background-base-color: #fff;
 $background-main-color: #0a0a0a;
@@ -29,7 +33,9 @@ $card-shadow: rgba(88, 88, 88, 0.20);
 
 $button-background-main: #e26c1f;
 $button-background-edit: #383838;
-$button-background-delete: #e2251f;
+$button-background-edit-hover: rgba(56, 56, 56, 0.8);
+$button-background-delete: #b61d18;
+$button-background-delete-hover: #e2251f;
 $button-background-hover: #d85600;
 $button-shadow-color: rgba(255, 161, 0, 0.343262);
 

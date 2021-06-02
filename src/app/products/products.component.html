@@ -1,8 +1,21 @@
 <div class="filters" *ngIf="!isProduct">
   <div class="col filter">
-    <p class="filter-label">filter</p>
-    <input type="text" class="filter-input filter-left" #filterNames />
-    <button type="button" class="btn btn-custom-filter filter-right">
+    <p class="filter-label">Tipo de vehiculo</p>
+    <select class="filter-input filter-left" #filter>
+        <option value="">Selecciona el tipo de vehiculo</option>
+        <option value="Automovil">Automovil
+        </option>
+        <option value="Monovolumen">Monovolumen
+        </option>
+        <option value="Motocicletas">Motocicleta
+        </option>
+        <option value="Todoterreno">Todoterreno
+        </option>
+        <option value="Comerciales">Comercial
+        </option>
+        <option value="Agrarios">Agrario</option>
+      </select>
+    <button type="button" class="btn btn-custom-filter filter-right" (click)="filterProducts(filter.value)">
       <img src="../../assets/icons/search.svg" alt="Filtrar" />
     </button>
   </div>

@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" data-aos="fade-zoom-in" data-aos-once="true" data-aos-delay="100" data-aos-duration="600">
   <form class="login-form" [formGroup]="financingForm" (ngSubmit)="onSubmit()">
     <div class="input-control">
       <label for="source" class="form-label">Colaborador</label>
@@ -36,13 +36,13 @@
     </div>
     <div class="input-control">
       <label for="availability" class="form-label">Fecha de fin de oferta</label>
-      <input type="date" id="availability" class="form-control" [ngClass]="{'is-invalid': form.availability.errors && isSent}"
-        formControlName="availability">
+      <input type="date" id="availability" class="form-control"
+        [ngClass]="{'is-invalid': form.availability.errors && isSent}" formControlName="availability">
       <div class="invalid-feedback">
         Introduce una fecha en la que finaliza la oferta
       </div>
     </div>
-
-    <button type="submit" class="submit-button">Submit</button>
+    <button type="submit" class="submit-button" *ngIf="id == 'new'">Registrar</button>
+    <button type="submit" class="submit-button" *ngIf="id !== 'new'">Actualizar</button>
   </form>
 </div>

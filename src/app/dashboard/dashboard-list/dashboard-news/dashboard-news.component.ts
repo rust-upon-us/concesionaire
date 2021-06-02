@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as Aos from 'aos';
 import { News } from './../../../models/news.model';
 import { NewsService } from './../../../services/news.service';
 
@@ -19,7 +20,7 @@ export class DashboardNewsComponent implements OnInit {
   isSent: Boolean = false;
   newsObject: News;
   newsForm: FormGroup;
-  newImage:String ="";
+  newImage: String = '';
 
   constructor(
     private router: Router,
@@ -44,6 +45,8 @@ export class DashboardNewsComponent implements OnInit {
         this.getData();
       }
     });
+
+    Aos.init();
   }
 
   get form(): any {
@@ -87,8 +90,6 @@ export class DashboardNewsComponent implements OnInit {
         this.newsObject.link = this.newsForm.controls.link.value;
         this.newsObject.image = this.newsForm.controls.image.value;
         this.newsObject.type = this.newsForm.controls.type.value;
-
-        console.log(this.newsObject);
         this.newsService.update(this.newsObject).subscribe(
           (data) => {
             this.router.navigate(['/dashboard/news']);
@@ -103,8 +104,7 @@ export class DashboardNewsComponent implements OnInit {
     }
   }
 
-  displayImage(){
-    console.log("hello world")
+  displayImage() {
     this.newImage = this.newsForm.controls.image.value;
   }
 }
