@@ -1,11 +1,11 @@
 @import "../../app.component.scss";
 
 .main {
-  padding: 0px 10%;
+  padding: 0px 10% 30px 10%;
   .carousel {
     width: 100%;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     padding: 0px;
     .carousel-indicators {
       background-color: $background-aux2-color;
@@ -89,7 +89,7 @@
     background-color: $background-card-color;
     color: $text-base-color;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
     font-size: 2em;
     padding: 10px;
   }
