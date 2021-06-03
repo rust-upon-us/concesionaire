@@ -116,6 +116,8 @@ export class DashboardListComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    this.calcHeight();
   }
 
   getData() {
@@ -539,7 +541,7 @@ export class DashboardListComponent implements AfterViewInit {
     }
   }
 
-  calcHeight(elements: number) {
+  calcHeight(elements: number = 0) {
     if (this.main) {
       this.pageHeight = this.main.nativeElement.offsetHeight;
     }
@@ -547,15 +549,18 @@ export class DashboardListComponent implements AfterViewInit {
       this.elementHeight = this.containner.nativeElement.offsetHeight;
     }
     this.auxHeight =
-      ((this.pageHeight - this.elementHeight) / 10) * (10 - elements);
+      ((this.pageHeight - this.elementHeight) / 14) * (10 - elements);
     console.log(
       this.pageHeight + ' ' + this.elementHeight + ' ' + this.auxHeight
     );
-    this.content.nativeElement.style = 'height: ' + this.auxHeight + 'px ';
+    if (this.content) {
+      this.content.nativeElement.style =
+        'height: ' + this.auxHeight + 'px ';
+    }
   }
 
   calcDelay() {
-    this.delay = 100 + (this.length / 10) * 200;
+    this.delay = 200 + (this.length / 10) * 200;
     Aos.init();
   }
 }

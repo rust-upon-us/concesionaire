@@ -12,12 +12,11 @@
     margin-bottom: 20px;
     padding: 0px;
     .carousel-indicators {
-      background-color: $background-aux2-color;
       margin: 0px;
       width: 100%;
       bottom: 20px;
       button {
-        background-color: $background-aux-color;
+        background-color: $input-background-main;
         padding: 4px;
       }
     }
@@ -36,13 +35,13 @@
           width: 100%;
         }
         .carousel-caption {
-          background-color: $background-card-color;
+          background-color: $background-aux-color;
           color: $text-aux-color;
-          padding: 375px 100px 125px 100px;
+          padding: 10px 40px 0px 40px;
           position: relative;
-          height: 500px;
+          height: 125px;
           width: 100%;
-          top: -500px;
+          top: -125px;
           left: 0px;
           h5 {
             font-size: $title-text-size;
@@ -60,11 +59,16 @@
     justify-items: center;
     position: relative;
     display: grid;
+    .message{
+      font-size: $title3-text-size;
+      color: $text-aux-color;
+      margin: 30px;
+    }
     .aux-container {
       background: $background-card-color;
       color: $text-aux-color;
       border-radius: 15px;
-      margin: 30px;
+      margin-bottom: 50px;
       width: 80%;
       .float-left {
         border-bottom-left-radius: 15px;

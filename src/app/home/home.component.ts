@@ -10,8 +10,8 @@ import * as Aos from 'aos';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  ipsum =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+  message =
+    'Somos una empresa dedicada a la venta de vehiculos en la que ofrecemos a los usuarios que buscan vehiculos un completo catálogo de vehiculos para facilitar encontrar aquello que andan buscando actuamos por tanto como un lugar de referencia para los usuarios que buscan un nuevo coche como para los profesionales que buscan incrementar capacidades de negocio';
 
   imgBuilding = 'url(../../assets/images/landing-building.jpg)';
   imgField = 'url(../../assets/images/landing-field.jpg)';
@@ -37,13 +37,12 @@ export class HomeComponent implements OnInit {
     this.newsService.getListHome().subscribe(
       (data) => {
         let news = data;
-        this.newsCard = news.filter(record => record.type === "card")
-        this.newsCarousel =  news.filter((record) => record.type === "carousel")
+        this.newsCard = news.filter((record) => record.type === 'card');
+        this.newsCarousel = news.filter((record) => record.type === 'carousel');
       },
       (error) => {
         console.log(error);
       }
     );
-
   }
 }

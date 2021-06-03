@@ -3,7 +3,7 @@
     <app-dashboard-navigation></app-dashboard-navigation>
   </div>
   <div class="list-containner">
-    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChange($event)" class="mat-elevation-z8" #containner>
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChange($event)" class="mat-elevation-z8" #containner >
       <div *ngIf="isBilling">
         <!-- Vehiculo -->
         <ng-container matColumnDef="vehicle">
